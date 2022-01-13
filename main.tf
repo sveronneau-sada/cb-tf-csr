@@ -12,23 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+locals {
+  env = "demo"
+}
+
+provider "google" {
+  project = "${var.project}"
+}
 
 module "vpc" {
-  source  = "terraform-google-modules/network/google"
-  version = "3.3.0"
+  source  = "./modules/vpc"
+  project = "${var.project}"
+  env     = "${local.env}"
+}
 
-  project_id   = "${var.project}"
-  network_name = "${var.env}"
-
-  subnets = [
-    {
-      subnet_name   = "${var.env}-subnet-01"
-      subnet_ip     = "10.${var.env == "dev" ? 10 : 20}.10.0/24"
-      subnet_region = "us-west1"
-    },
-  ]
-
-  secondary_ranges = {
-    "${var.env}-subnet-01" = []
-  }
+module "firewall" {
+  source  = "./modules/firewall"
+  project = "${var.project}"
+  subnet  = "${module.vpc.subnet}"
 }

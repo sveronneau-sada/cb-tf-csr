@@ -14,9 +14,13 @@
 
 
 output "network" {
-  value = "${module.vpc.network_name}"
+  value = "${module.vpc.network}"
 }
 
 output "subnet" {
-  value = "${element(module.vpc.subnets_names, 0)}"
+  value = "${module.vpc.subnet}"
+}
+
+output "firewall_rule" {
+  value = "${module.firewall.firewall_rule}"
 }
