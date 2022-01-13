@@ -12,9 +12,9 @@ Those are the pre-requisites for runnign the following Terraform execution with 
 - gcloud source repos create YOUR_REPO
 - gcloud source repos clone YOUR_REPO
 - git clone https://github.com/sveronneau/cb-tf-csr.git
-- cd cb-tf-csr
-- rm -rf .git
-- mv * ../YOUR_REPO
+- rm -rf cb-tf-csr/.git
+- cp -R cb-tf-csr/. YOUR_REPO
+- rm -rf cb-tf-csr
 - cd ../YOUR_REPO
 - Change the PROJECT ID in terraform.tfvars
 - git add .
