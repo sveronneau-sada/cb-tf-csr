@@ -11,10 +11,14 @@ Those are the pre-requisites for runnign the following Terraform execution with 
 - git config --global user.email "YOUR EMAIL"
 - gcloud source repos create YOUR_REPO
 - gcloud source repos clone YOUR_REPO
-- cd YOUR_REPO
-- echo readme > README.md
+- git clone https://github.com/sveronneau/cb-tf-csr.git
+- cd cb-tf-csr
+- rm -rf .git
+- mv * ../YOUR_REPO
+- cd ../YOUR_REPO- 
+- Change the PROJECT ID in terraform.tfvars
 - git add .
-- git commit -m "initial commit" README.md
+- git commit -m "initial commit"
 - git push -u origin master
 
 ## Set TF State file
