@@ -29,7 +29,6 @@ Those are the pre-requisites for runnign the following Terraform execution with 
 ## Allow Cloud Build Service Account to manage resources in our project
 - PROJECT_ID=$(gcloud config get-value project)
 - CLOUDBUILD_SA="$(gcloud projects describe $PROJECT_ID --format 'value(projectNumber)')@cloudbuild.gserviceaccount.com"
-- echo $CLOUDBUILD_SA
 - gcloud projects add-iam-policy-binding $PROJECT_ID --member serviceAccount:$CLOUDBUILD_SA --role roles/editor	
 
 # Inspired by
