@@ -15,7 +15,7 @@ Those are the pre-requisites for runnign the following Terraform execution with 
 - cd cb-tf-csr
 - rm -rf .git
 - mv * ../YOUR_REPO
-- cd ../YOUR_REPO- 
+- cd ../YOUR_REPO
 - Change the PROJECT ID in terraform.tfvars
 - git add .
 - git commit -m "initial commit"
