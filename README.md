@@ -11,10 +11,14 @@ Those are the pre-requisites for runnign the following Terraform execution with 
 - git config --global user.email "YOUR EMAIL"
 - gcloud source repos create YOUR_REPO
 - gcloud source repos clone YOUR_REPO
-- cd YOUR_REPO
-- echo readme > README.md
+- git clone https://github.com/sveronneau/cb-tf-csr.git
+- rm -rf cb-tf-csr/.git
+- cp -R cb-tf-csr/. YOUR_REPO
+- rm -rf cb-tf-csr
+- cd ../YOUR_REPO
+- Change the PROJECT ID in terraform.tfvars
 - git add .
-- git commit -m "initial commit" README.md
+- git commit -m "initial commit"
 - git push -u origin master
 
 ## Set TF State file
@@ -25,7 +29,6 @@ Those are the pre-requisites for runnign the following Terraform execution with 
 ## Allow Cloud Build Service Account to manage resources in our project
 - PROJECT_ID=$(gcloud config get-value project)
 - CLOUDBUILD_SA="$(gcloud projects describe $PROJECT_ID --format 'value(projectNumber)')@cloudbuild.gserviceaccount.com"
-- echo $CLOUDBUILD_SA
 - gcloud projects add-iam-policy-binding $PROJECT_ID --member serviceAccount:$CLOUDBUILD_SA --role roles/editor	
 
 # Inspired by
